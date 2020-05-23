@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from "./Person.css";
+import AUX from '../../../hoc/Hoc-aux';
 import WithClasses from '../../../hoc/WithClasses';
 
 class Person extends Component {
@@ -19,14 +20,14 @@ class Person extends Component {
     render() {
         console.log('[Person.JS] - inside render');
         return (
-            <WithClasses Class={classes.Person}>
+            <AUX>
                 <h2 onClick={this.props.click}>My name is {this.props.name} and I am {this.props.age} years old!!!</h2>
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.change} value={this.props.name} />
                 {/* <h2>My name is Vaskar Sarma and I am {Math.floor(Math.random() * 30)} years old.</h2> */}
-            </WithClasses>
+            </AUX>
         );
     }
 }
 
-export default Person;
+export default WithClasses(Person,classes.Person);
